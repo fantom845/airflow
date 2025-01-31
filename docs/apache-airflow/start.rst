@@ -52,7 +52,19 @@ constraint files to enable reproducible installation, so using ``pip`` and const
 
       export AIRFLOW_HOME=~/airflow
 
-2. Install Airflow using the constraints file, which is determined based on the URL we pass:
+2. Create and activate a virtual environment (recommended):
+
+   Debian/Ubuntu systems require Python packages to be installed in virtual environments. Create one with:
+
+   .. code-block:: bash
+
+     python -m venv airflow-venv
+     source airflow-venv/bin/activate
+
+   .. note::
+   Using a virtual environment is recommended even on non-Debian systems to avoid package conflicts. Debian/Ubuntu systems enforce this requirement starting with Python 3.11.
+
+3. Install Airflow using the constraints file, which is determined based on the URL we pass:
 
    .. code-block:: bash
       :substitutions:
@@ -69,7 +81,7 @@ constraint files to enable reproducible installation, so using ``pip`` and const
 
       pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}"
 
-3. Run Airflow Standalone:
+4. Run Airflow Standalone:
 
    The ``airflow standalone`` command initializes the database, creates a user, and starts all components.
 
@@ -77,7 +89,7 @@ constraint files to enable reproducible installation, so using ``pip`` and const
 
       airflow standalone
 
-4. Access the Airflow UI:
+5. Access the Airflow UI:
 
    Visit ``localhost:8080`` in your browser and log in with the admin account details shown in the terminal. Enable the ``example_bash_operator`` DAG in the home page.
 
